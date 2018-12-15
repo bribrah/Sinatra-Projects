@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html{
+            background-color: rgba(226,208,206,0.6);
+        }
+        body{
+            text-align: center;
+        }
+        h1{
+            color: blue;
+
+        }
+        .cipherBox {
+            margin: auto;
+            padding-top: 20px;
+        }
+        .cipherBox p{
+            font-size: 20px
+        }
+    </style>
+</head>
+<body>
+<h1>Brians Cipher!</h1>
+<div class = "cipherBox">
+<p>Please enter the text you would like to cipher</p>
+    <form action="">
+        Text: <input type="text" name="input">
+        Offset: <input type="number" name="cipher_num" min="0" max="26">
+        <input type="submit" name="submit">
+    </form>
+    <p>Ciphered Str: <%= ciphered_str %></p>
+    <div>
+</body>
+</html>
