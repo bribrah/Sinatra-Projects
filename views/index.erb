@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hangman</title>
+    <style>
+        html{
+            background-color: #f9f9cf
+        }
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hangman</h1>
+    <h2>Made by Brian Espinosa</h2>
+    <% if guesses_left.to_i == 10 || game_won%>
+        <img src="images/0.jpg" alt="">
+    <%elsif guesses_left.to_i == 9%>
+        <img src="images/1.jpg" alt="">
+    <%elsif guesses_left.to_i == 8%>
+        <img src="images/2.jpg" alt="">
+    <%elsif guesses_left.to_i == 7%>
+        <img src="images/3.jpg" alt="">
+    <%elsif guesses_left.to_i == 6%>
+        <img src="images/4.jpg" alt="">
+    <%elsif guesses_left.to_i == 5%>
+        <img src="images/5.jpg" alt="">
+    <%elsif guesses_left.to_i == 4%>
+        <img src="images/6.jpg" alt="">
+    <%elsif guesses_left.to_i == 3%>
+        <img src="images/7.jpg" alt="">
+    <%elsif guesses_left.to_i == 2%>
+        <img src="images/8.jpg" alt="">
+    <%elsif guesses_left.to_i == 1%>
+        <img src="images/9.jpg" alt="">
+    <%elsif guesses_left.to_i == 0%>
+        <img src="images/10.jpg" alt="">
+    <%end%>
+    <p style = "font-size:3em"> <%= guess_display %></p>
+    <%if guesses_left != 0%>
+        <form action="">
+            Please choose a letter: <input type="text" name = guess maxlength = "1" style = "width: 10px">
+            <input type="submit" name = "submit">
+        </form>
+    <% end %>
+    <p> Past Guesses: <%= past_guesses %></p>
+    <p> <%= guess_output %></p>
+    <p>guesses_left: <%= guesses_left %></p>
+    <% if guesses_left == 0 || game_won%>
+        <form action="">
+            <input type="button" value= "New Game" onclick="<% game.new_game %>; guess = '';     window.location.reload();">
+        </form>
+    <% end %>
+
+</body>
+</html>
