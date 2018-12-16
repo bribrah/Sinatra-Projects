@@ -1,7 +1,7 @@
 class Game
     dictionary =  File.read "5desk.txt"
     $dictionary_array = dictionary.split(" ")
-    attr_accessor :guess_display, :guess_output, :past_guesses, :guesses_left
+    attr_accessor :guess_display, :guess_output, :past_guesses, :guesses_left, :game_won
     def initialize()
         
         @guesses_left = 10
@@ -16,10 +16,15 @@ class Game
         @guess_display  = @guess_display.rjust(@random_word.length * 2,"_ ")
         @guess_removed = @random_word
         @original_random_word = @random_word
+        @game_won = false
     end
     
     def check_guess(guess)
-        if guess.length != 1 || guess.match?(/[a-zA-Z]/) != true || @past_guesses.match?(guess) == true
+        guess = guess.to_s
+        if guess == "[" 
+            @guess_output = "Guess must be one letter, please choose again"
+            return false
+        elsif guess.length != 1 || guess.match?(/[a-zA-Z]/) != true || @past_guesses.match?(guess) == true 
             if @past_guesses.match?(guess) == true
                 @guess_output = "You have already guessed that letter! Please choose again"
             elsif guess == "save"
@@ -67,11 +72,13 @@ class Game
             end
             if @guess_removed == ""
                 @guess_output = "Congratulations you win!"
+                @game_won = true
             end
         end
     end
 end
 
-def new_game?
+
+public def new_game
     initialize
 end
