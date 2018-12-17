@@ -21,7 +21,7 @@ class Game
     
     def check_guess(guess)
         guess = guess.to_s
-        if guess == "[" 
+        if guess == "["  || guess == "\\"
             @guess_output = "Guess must be one letter, please choose again"
             return false
         elsif guess.length != 1 || guess.match?(/[a-zA-Z]/) != true || @past_guesses.match?(guess) == true 

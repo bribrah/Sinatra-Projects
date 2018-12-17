@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-    <h1>Hangman</h1>
+    <h1>Hangman</h1>0
     <h2>Made by Brian Espinosa</h2>
     <% if guesses_left.to_i == 10 || game_won%>
         <img src="images/0.jpg" alt="">
@@ -51,8 +51,9 @@
     <p> <%= guess_output %></p>
     <p>guesses_left: <%= guesses_left %></p>
     <% if guesses_left == 0 || game_won%>
+    <% params["guess"] = ""%>
         <form action="">
-            <input type="button" value= "New Game" onclick="<% game.new_game %>; guess = '';     window.location.reload();">
+            <input type="button" value= "New Game" onclick="<% game.new_game %>; window.location.reload();">
         </form>
     <% end %>
 
