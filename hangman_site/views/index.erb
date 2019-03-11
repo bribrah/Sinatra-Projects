@@ -6,15 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hangman</title>
     <style>
+        html{
+            background-color: #f9f9cf
+        }
         body{
             text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>Hangman</h1>
+    <h1>Hangman</h1>0
     <h2>Made by Brian Espinosa</h2>
-    <% if guesses_left.to_i == 10%>
+    <% if guesses_left.to_i == 10 || game_won%>
         <img src="images/0.jpg" alt="">
     <%elsif guesses_left.to_i == 9%>
         <img src="images/1.jpg" alt="">
@@ -40,16 +43,17 @@
     <p style = "font-size:3em"> <%= guess_display %></p>
     <%if guesses_left != 0%>
         <form action="">
-            Please choose a letter: <input type="text" name = guess>
+            Please choose a letter: <input type="text" name = guess maxlength = "1" style = "width: 10px">
             <input type="submit" name = "submit">
         </form>
     <% end %>
     <p> Past Guesses: <%= past_guesses %></p>
     <p> <%= guess_output %></p>
-    <p>Incorrect guesses left: <%= guesses_left %></p>
-    <% if guesses_left == 0%>
+    <p>incorrect guesses left: <%= guesses_left %></p>
+    <% if guesses_left == 0 || game_won%>
+    <% params["guess"] = ""%>
         <form action="">
-            <input type="submit" name= "new_game">
+            <input type="button" value= "New Game" onclick="<% game.new_game %>; window.location.reload();">
         </form>
     <% end %>
 
