@@ -56,6 +56,11 @@
             <input type="button" value= "New Game" onclick="<% game.new_game %>; window.location.reload();">
         </form>
     <% end %>
-<script src="main.js"></script>
+<script>
+    const input = document.querySelector("input");
+    input.addEventListener('keyup', e => {
+        console.log('Caret at: ', e.target.selectionStart)
+    })
+</script>
 </body>
 </html>
